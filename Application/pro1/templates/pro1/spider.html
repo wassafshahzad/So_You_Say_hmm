@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  {% load staticfiles %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+ 
+  <style>
+  body{
+  	color: white;
+  }
+
+
+
+
+  </style>
+</head>
+<body style='background-image: url("{% static 'pro1/Image.jpg' %}");background-size: cover' >
+
+<div class="container text-center">
+	<div id = "message"  class='alert alert-success' style='display:none'> Please give me a minute Its big page I'm trying my best</div>
+	<div class="row">
+  		<h1 >Sentiment Analysis Project</h1>
+  	</div>
+    <hr>
+  	{% if error is True %}
+  		<div class="alert alert-danger">
+  				<strong>Enter Valide URL example: https://www.google.com/</strong> 
+		</div>
+	{% endif %}
+	<div id='h'>
+		  	<form  method='post' type=>
+	  		{% csrf_token %}
+		  	<div class ='row' style="height :100%;width: 100%;margin-top:20%">
+		  		<div class="col-md-6 col-md-offset-3">
+		  			
+		  				<div class="form-group">
+		    				<label for="Webs-site" style='font-size: 200%'>Enter a Comment</label>
+		    				<input type="text" class="form-control" id="t" placeholder="Type a comment" name ='input' required>
+		  				</div>
+					</form>
+		  		</div>
+		  		<div class ="row" style="">
+		  			<div class="col-md-2 col-md-offset-5 ">
+		  				<button id='sub' type="submit" class="btn btn-primary btn-md">Predict</button>
+					</div>
+					
+		  		</div>
+		  	</div>
+		</form> 
+	</div> 
+  </div>
+  <div class = "container" style='Color:white'>
+  	<h2>Description</h2>
+  	<hr>
+  	<br>
+  	{% if value is False %}
+  	<p id="kil" style='font-size: 120%;Color:white'>
+  		Hello This is a Machien learning Project.This project aims to  predict wheather  the comment is negative or positive it can be improved to find sentiment of social media users of a particular topic or person for analysis.
+  	</p>
+  	{% endif %}
+  	{% if value is True %}
+  	<p id="kil" style='font-size: 120%;Color:white'>
+  		You said {{sent}}
+  		<br>
+  		Your Prediction in {{pre}}
+  	</p>
+  	{% endif %}
+  	
+
+  </div>
+</div>
+</body>
+</html>
